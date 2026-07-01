@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>OrthoNow | Expert Orthopaedic Consultation</title>
+    <style>
+        /* =========================================
+           PREMIUM CLINICAL STYLES (BROWN & BEIGE)
+           ========================================= */
+        :root {
+        --brand-dark: #2C1E1B;      /* Deep Espresso for text/headings */
+        --brand-primary: #A67C52;   /* Burnt Sienna for CTA button */
+        --brand-light: #F4F1ED;     /* Soft Sand for background/cards */
+        --text-muted: #8D7B74;      /* Muted tone for subheadlines */
+        --border-color: #E0D8D0;    /* Subtle borders */
+}
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            line-height: 1.5;
+            background: linear-gradient(135deg, var(--brand-dark) 0%, #4E342E 50%, var(--brand-primary) 100%);
+            color: #FFFFFF; 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Official Header */
+        .header {
+            width: 100%;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .header-logo { font-size: 1.5rem; font-weight: 800; color: var(--brand-light); letter-spacing: -0.5px; display: flex; align-items: center; gap: 8px;}
+        .header-contact { font-size: 0.9rem; font-weight: 600; color: var(--brand-light); display: none; }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .hero { text-align: center; }
+        .hero h1 { font-size: 2.25rem; font-weight: 800; margin-bottom: 0.75rem; line-height: 1.2; }
+        .hero p { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 1.5rem; max-width: 600px; margin-left: auto; margin-right: auto;}
+        
+        /* Premium Badges with SVG */
+        .trust-bar { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; }
+        .trust-badge { 
+            background: rgba(253, 251, 247, 0.1); 
+            border: 1px solid rgba(253, 251, 247, 0.2);
+            padding: 0.5rem 1rem; 
+            border-radius: 6px; 
+            font-size: 0.85rem; 
+            font-weight: 500; 
+            display: flex; 
+            align-items: center; 
+            gap: 6px; 
+        }
+
+        /* Widget-style Form Card */
+        .form-card { 
+            background: var(--brand-light); 
+            padding: 2rem; 
+            border-radius: 8px; 
+            width: 100%; 
+            max-width: 400px; 
+            color: var(--brand-dark); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border-top: 4px solid var(--brand-primary);
+        }
+        
+        .form-card h3 { font-size: 1.35rem; margin-bottom: 0.5rem; font-weight: 700; text-align: center; }
+        .form-subtitle { text-align: center; font-size: 0.85rem; color: #6D4C41; margin-bottom: 1.5rem; }
+        
+        .form-group { margin-bottom: 1.25rem; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--brand-primary); }
+        .form-group input { width: 100%; padding: 0.75rem 1rem; border: 1px solid #BCAAA4; border-radius: 4px; font-size: 1rem; background-color: #FFFFFF; transition: border 0.2s;}
+        .form-group input:focus { outline: none; border-color: var(--brand-primary); box-shadow: 0 0 0 3px rgba(93, 64, 55, 0.1); }
+        
+        .cta-btn { width: 100%; background-color: var(--brand-primary); color: #FFFFFF; padding: 1rem; border: none; border-radius: 4px; font-size: 1.05rem; font-weight: 700; cursor: pointer; transition: 0.2s; }
+        .cta-btn:hover { background-color: var(--brand-dark); }
+        
+        .secure-text { text-align: center; font-size: 0.75rem; color: #8D6E63; margin-top: 1rem; display: flex; align-items: center; justify-content: center; gap: 4px;}
+
+        /* Success State */
+        #success-state { display: none; text-align: center; padding: 3rem 1rem; }
+        .success-icon { width: 48px; height: 48px; fill: #2E7D32; margin-bottom: 1rem; }
+
+        /* Official Footer */
+        .footer { text-align: center; padding: 1.5rem; font-size: 0.75rem; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.1); margin-top: auto;}
+
+        /* Desktop Layout */
+        @media (min-width: 768px) {
+            .header-contact { display: block; }
+            .main-content { flex-direction: row; justify-content: space-between; padding: 4rem 2rem; }
+            .hero { text-align: left; flex: 1.2; }
+            .hero h1 { font-size: 3rem; }
+            .hero p { max-width: 90%; margin-left: 0; }
+            .trust-bar { justify-content: flex-start; }
+            .form-wrapper { flex: 1; display: flex; justify-content: flex-end; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            OrthoNow
+        </div>
+        <div class="header-contact">Call to book: 080 4712 3456</div>
+    </header>
+
+    <div class="main-content">
+        <div class="hero">
+            <h1>Get an expert orthopaedic opinion.</h1>
+            <p>Book your consultation at OrthoNow. Specializing in advanced knee and back pain relief for professionals in Bengaluru.</p>
+            <div class="trust-bar">
+                <span class="trust-badge">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    9 Clinics in Bengaluru
+                </span>
+                <span class="trust-badge">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="4"></circle><path d="M5.5 21v-2a4 4 0 0 1 4-4h5a4 4 0 0 1 4 4v2"></path></svg>
+                    Experienced Specialists
+                </span>
+            </div>
+        </div>
+
+        <div class="form-wrapper">
+            <div class="form-card" id="form-section">
+                <h3>Book Your Consultation</h3>
+                <p class="form-subtitle">Takes less than 30 seconds</p>
+                <form id="consultation-form">
+                    <div class="form-group">
+                        <label for="patientName">Full Name</label>
+                        <input type="text" id="patientName" required placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="patientPhone">Phone Number</label>
+                        <input type="tel" id="patientPhone" required pattern="[0-9]{10}" placeholder="10-digit mobile number">
+                    </div>
+                    <button type="submit" class="cta-btn">Request Appointment</button>
+                </form>
+                <div class="secure-text">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    Your details are 100% safe & confidential.
+                </div>
+            </div>
+            
+            <div class="form-card" id="success-state">
+                <svg class="success-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <h3 style="color: #2E7D32;">Request Received!</h3>
+                <p style="font-size: 0.9rem; margin-top: 8px;">Please check your WhatsApp in the next 2 minutes for your appointment confirmation details.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        &copy; 2026 OrthoNow Clinics. All rights reserved. | Privacy Policy
+    </footer>
+
+    <script>
+        document.getElementById('consultation-form').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            
+            const name = document.getElementById('patientName').value;
+            const phone = document.getElementById('patientPhone').value;
+            
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                'event': 'consultation_form_submitted',
+                'lead_name': name,
+                'lead_phone': phone,
+                'campaign_target': 'Bengaluru_Professionals'
+            });
+
+            document.getElementById('form-section').style.display = 'none';
+            document.getElementById('success-state').style.display = 'flex';
+            document.getElementById('success-state').style.flexDirection = 'column';
+            document.getElementById('success-state').style.alignItems = 'center';
+        });
+    </script>
+</body>
+</html>
